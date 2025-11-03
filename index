@@ -1,1 +1,337 @@
+<H1>智慧旅遊導覽</H1>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智慧旅遊導覽系統 - 台灣</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="neumorphism-panel header-panel">
+            <h1>🇹🇼 AI智慧旅遊導覽系統</h1>
+            <p>透過AI規劃您的台灣之旅，探索精彩景點。</p>
+        </header>
 
+        <section class="api-settings neumorphism-panel">
+            <h2>⚙️ API 設定區</h2>
+            <div class="input-group">
+                <label for="openai-key">OpenAI API Key:</label>
+                <input type="text" id="openai-key" placeholder="輸入您的API Key" class="neumorphism-input">
+            </div>
+            <div class="input-group">
+                <label for="map-token">地圖服務 Token:</label>
+                <input type="text" id="map-token" placeholder="輸入地圖服務 Token" class="neumorphism-input">
+            </div>
+            <button class="neumorphism-button primary-button">保存設定</button>
+        </section>
+
+        <nav class="sidebar neumorphism-panel">
+            <h2>🗺️ 路線規劃與景點</h2>
+            <ul class="menu-list">
+                <li><a href="#" class="neumorphism-item active">🇹🇼 環島經典路線</a></li>
+                <li><a href="#" class="neumorphism-item">🏞️ 自然風光景點</a></li>
+                <li><a href="#" class="neumorphism-item">🏛️ 歷史文化古蹟</a></li>
+                <li><a href="#" class="neumorphism-item">🏙️ 城市都會體驗</a></li>
+            </ul>
+
+            <div class="route-planning">
+                <h3>AI 路線生成</h3>
+                <input type="text" placeholder="目的地 (e.g., 台中)" class="neumorphism-input">
+                <select class="neumorphism-select">
+                    <option>天數 (e.g., 3天)</option>
+                    <option>1天</option>
+                    <option>2天</option>
+                    <option>3天</option>
+                </select>
+                <button class="neumorphism-button accent-button">生成路線</button>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <section class="attraction-cards">
+                <h2>🌟 精選景點卡片</h2>
+                <div class="attraction-card neumorphism-card">
+                    <div class="card-image-placeholder">
+                        
+                        </div>
+                    <div class="card-content">
+                        <h3>日月潭</h3>
+                        <p class="description">台灣最大的天然湖泊，湖光山色，風景秀麗。</p>
+                        <button class="neumorphism-button small-button">查看詳情</button>
+                        <button class="neumorphism-button small-button">生成新圖</button>
+                    </div>
+                </div>
+
+                <div class="attraction-card neumorphism-card">
+                    <div class="card-image-placeholder">
+                        
+                        </div>
+                    <div class="card-content">
+                        <h3>台北101</h3>
+                        <p class="description">曾為世界第一高樓，是台北市重要的地標與觀景台。</p>
+                        <button class="neumorphism-button small-button">查看詳情</button>
+                        <button class="neumorphism-button small-button">生成新圖</button>
+                    </div>
+                </div>
+                </section>
+
+            <section class="map-display neumorphism-panel">
+                <h2>📍 地圖展示區</h2>
+                <div class="map-placeholder">
+                    [地圖模擬畫面：顯示路線和景點標記]
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
+style.css
+將以下內容儲存為 style.css 檔案。
+
+CSS
+
+:root {
+    /* 主要背景色 - 淺灰色調 */
+    --main-color: #e0e5ec; 
+    /* 較淺的陰影顏色 */
+    --light-color: #ffffff;
+    /* 較深的陰影顏色 */
+    --dark-color: #a3b1c6; 
+    /* 主色調 - 用於按鈕或強調 */
+    --primary-color: #4CAF50;
+    --accent-color: #007bff;
+
+    /* Neumorphism 陰影參數 */
+    --shadow-light: -7px -7px 15px var(--light-color);
+    --shadow-dark: 7px 7px 15px var(--dark-color);
+    --shadow-inset-light: inset 5px 5px 10px var(--dark-color);
+    --shadow-inset-dark: inset -5px -5px 10px var(--light-color);
+    --border-radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: '微軟正黑體', 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background-color: var(--main-color);
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    /* 佈局: 選單區 (250px) | 主要內容區 (剩餘空間) */
+    grid-template-columns: 250px 1fr; 
+    /* 標題區 | 選單區 / 主要內容區 */
+    grid-template-rows: auto 1fr; 
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- 柔和亞克力 (Neumorphism) 基礎樣式 --- */
+
+.neumorphism-panel,
+.neumorphism-card {
+    background: var(--main-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    /* 標準浮雕效果 */
+    box-shadow: var(--shadow-dark), var(--shadow-light); 
+}
+
+/* 讓標題區橫跨兩欄 */
+.header-panel {
+    grid-column: 1 / -1; 
+    text-align: center;
+    padding: 30px 20px;
+}
+
+/* --- API設定區與選單區 --- */
+
+.api-settings {
+    grid-column: 1 / 2;
+}
+
+.sidebar {
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* API 輸入框 */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.neumorphism-input,
+.neumorphism-select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    background: var(--main-color);
+    border-radius: 8px;
+    /* 凹陷效果 */
+    box-shadow: var(--shadow-inset-light), var(--shadow-inset-dark); 
+    transition: all 0.2s ease-in-out;
+}
+
+.neumorphism-input:focus,
+.neumorphism-select:focus {
+    outline: none;
+    /* 輕微的邊框突出，強調聚焦 */
+    box-shadow: inset 2px 2px 5px var(--dark-color), inset -2px -2px 5px var(--light-color); 
+}
+
+/* 選單列表 */
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.neumorphism-item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: var(--main-color);
+    /* 浮雕效果 */
+    box-shadow: var(--shadow-dark), var(--shadow-light); 
+    transition: all 0.3s ease;
+}
+
+.neumorphism-item:hover {
+    /* 懸停時模擬按下的凹陷效果 */
+    box-shadow: var(--shadow-inset-light), var(--shadow-inset-dark); 
+}
+
+.neumorphism-item.active {
+    /* 選擇中的項目顯示凹陷 */
+    box-shadow: var(--shadow-inset-light), var(--shadow-inset-dark); 
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+/* --- 按鈕樣式 --- */
+
+.neumorphism-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background: var(--main-color);
+    /* 浮雕效果 */
+    box-shadow: var(--shadow-dark), var(--shadow-light); 
+    transition: all 0.2s ease-in-out;
+    margin-top: 10px;
+}
+
+.neumorphism-button:hover {
+    /* 懸停時讓陰影更明顯，增加互動感 */
+    box-shadow: 10px 10px 20px var(--dark-color), -10px -10px 20px var(--light-color);
+}
+
+.neumorphism-button:active {
+    /* 按下時的凹陷效果 */
+    box-shadow: var(--shadow-inset-light), var(--shadow-inset-dark); 
+}
+
+/* 主色調按鈕 */
+.primary-button {
+    color: white;
+    background-color: var(--primary-color);
+    box-shadow: 5px 5px 10px rgba(76, 175, 80, 0.4), -5px -5px 10px rgba(76, 175, 80, 0.7);
+}
+
+.accent-button {
+    color: white;
+    background-color: var(--accent-color);
+    box-shadow: 5px 5px 10px rgba(0, 123, 255, 0.4), -5px -5px 10px rgba(0, 123, 255, 0.7);
+}
+
+.small-button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+/* --- 主要內容區 --- */
+
+.main-content {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 景點卡片區 */
+.attraction-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.attraction-card {
+    width: calc(50% - 10px); /* 兩欄佈局 */
+    display: flex;
+    overflow: hidden;
+}
+
+.card-image-placeholder {
+    width: 40%;
+    min-height: 180px;
+    background-color: #d8dee8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #666;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.card-content {
+    width: 60%;
+    padding: 15px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.description {
+    margin: 10px 0 15px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* 地圖展示區 */
+.map-display {
+    padding: 30px;
+}
+
+.map-placeholder {
+    width: 100%;
+    min-height: 400px;
+    background-color: #d8dee8;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #444;
+    /* 地圖區使用凹陷效果 */
+    box-shadow: var(--shadow-inset-light), var(--shadow-inset-dark); 
+}
